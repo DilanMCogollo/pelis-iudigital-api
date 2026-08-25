@@ -488,7 +488,7 @@
     "/api/medias/": {
       "post": {
         "tags": [
-          "Medias"
+          "Media"
         ],
         "description": "",
         "parameters": [
@@ -522,7 +522,7 @@
                 "director": {
                   "example": "any"
                 },
-                "prodcutora": {
+                "productora": {
                   "example": "any"
                 },
                 "tipo": {
@@ -543,7 +543,7 @@
       },
       "get": {
         "tags": [
-          "Medias"
+          "Media"
         ],
         "description": "",
         "responses": {
@@ -559,7 +559,7 @@
     "/api/medias/{id}": {
       "get": {
         "tags": [
-          "Medias"
+          "Media"
         ],
         "description": "",
         "parameters": [
@@ -584,7 +584,7 @@
       },
       "put": {
         "tags": [
-          "Medias"
+          "Media"
         ],
         "description": "",
         "parameters": [
@@ -640,6 +640,28 @@
           },
           "400": {
             "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Media"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }

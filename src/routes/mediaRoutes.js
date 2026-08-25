@@ -2,21 +2,24 @@ const express=require('express');
 const router=express.Router();
 
 const{
-    crearMedia,buscarMedias,buscarMediaPorId,actualizarMedia
+    crearMedia,buscarMedias,buscarMediaPorId,actualizarMedia,eliminarMedia
 }=require('../controllers/mediaController');
 
 
 router.post('/',
-    // #swagger.tags = ['Medias']
+    // #swagger.tags = ['Media']
     crearMedia);
 router.get('/',
-    // #swagger.tags = ['Medias']
+    // #swagger.tags = ['Media']
     buscarMedias);
 router.get('/:id',
-    // #swagger.tags = ['Medias']
+    // #swagger.tags = ['Media']
     buscarMediaPorId);
 router.put('/:id',
-    // #swagger.tags = ['Medias']
+    // #swagger.tags = ['Media']
     actualizarMedia);
+router.delete('/:id',
+    // #swagger.tags = ['Media']
+    eliminarMedia);
 
 module.exports=router;

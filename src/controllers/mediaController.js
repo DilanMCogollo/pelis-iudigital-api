@@ -78,7 +78,7 @@ const actualizarMedia = async (req, res) => {
     try {
         const { serial, titulo, sinopsis, url, imagenPortada, anioEstreno, genero, director, productora, tipo } = req.body;
         if (genero) {
-            const generoBuscado = await Gener.findOne({ _id: genero, estado: 'Activo' });
+            const generoBuscado = await Genero.findOne({ _id: genero, estado: 'Activo' });
             if (!generoBuscado) {
                 return res.status(400).json({ error: 'El genero seleccionado no existe o no esta activo' });
             }
@@ -120,5 +120,18 @@ const actualizarMedia = async (req, res) => {
     }
 };
 
+const eliminarMedia =async(req,res)=>{
+    try{
+        const mediaEliminada=await Media.findByIdAndDelete(req.params.id);
 
-module.exports={crearMedia,buscarMedias,buscarMediaPorId,actualizarMedia};
+        if(!mediaEliminada){
+            return res.status(404).json({error:'La media no fue encuentrada, posible error en la eliminación'});
+        }
+        res.json({mensaje: 'Media eliminada correctamente',media:mediaEliminada});
+    }catch(err){
+        res.status(500).json({error:err.message});
+    }
+};
+
+
+module.exports={crearMedia,buscarMedias,buscarMediaPorId,actualizarMedia,eliminarMedia};
